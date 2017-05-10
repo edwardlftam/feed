@@ -90,5 +90,13 @@ describe User do
         expect(token).to eq(subject.auth_token)
       end
     end
+
+    context "when password is incorrect" do
+      let(:password) { 'invalid_password' }
+      subject { create :user }
+      it "raises an error" do
+        expect { subject.authenticate!(password) }.to raise_error(User::AuthenticationError)
+      end
+    end
   end
 end
