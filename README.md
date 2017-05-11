@@ -59,6 +59,7 @@ Note that an extra *Action* layer is added here. The reason is that it provides 
 There are 4 models in this example: **User**, **Subscription**, **Feed** and **Article**
 
 **User** and **Feed** has a many-to-many relationship through the crosstable **Subscription**
+
 **Article** belongs to **Feed**
 
 ## Services
