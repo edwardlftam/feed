@@ -104,4 +104,4 @@ The following is a list of possible improvements:
 - Caching (Take advantage of memory store such as Redis to cache requently accessed queries to reduce the number of reads from the database)
 - Search Engine (If text search is important, we can probably take advantage of integrating a search engine such as Elasticsearch)
 - Better Serialization (E.g. integration of GraphQL to allow users to query just enough data has they need)
-- Real-time update (E.g. take advantage of Rails 5's ActionCable to achieve real-time update through TCP connections
+- Real-time update (E.g. take advantage of Rails 5's ActionCable to achieve real-time update through TCP connections to implement push notifications to push updates to users)
