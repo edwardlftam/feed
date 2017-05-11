@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users, only: [] do
+    resources :feeds, only: [:index] do
+      member do
+        post 'subscribe', to: 'feeds#subscribe'
+        delete 'unsubscribe', to: 'feeds#unsubscribe'
+      end
+    end
+    resources :articles, only: [:index]
+  end
+
+  resources :feeds, only: [] do
+    resources :articles, only: [:create]
+  end
 end

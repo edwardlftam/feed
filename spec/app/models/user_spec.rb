@@ -99,4 +99,20 @@ describe User do
       end
     end
   end
+
+  describe "associations" do
+    let(:user) { create :user }
+    let(:feed) { create :feed }
+    let!(:sub) { create :subscription, user_id: user.id, feed_id: feed.id }
+
+    subject { user }
+    
+    it "has association to subscriptions" do
+      expect(user.subscriptions.first).to be_a Subscription
+    end
+    
+    it "has association to feeds" do
+      expect(user.feeds.first).to be_a Feed
+    end
+  end
 end

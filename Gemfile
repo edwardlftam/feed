@@ -5,10 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1.0'
+gem 'bcrypt', '~> 3.1.7'
 gem 'mysql2'
 gem 'puma', '~> 3.7'
-gem 'bcrypt', '~> 3.1.7'
+gem 'rails', '~> 5.1.0'
 
 gem 'rack-cors'
 
@@ -26,6 +26,7 @@ end
 
 group :test do
   gem 'rspec'
+  gem 'rspec-collection_matchers'
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'database_cleaner'

@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
   validates_with UserValidator
 
+  has_many :subscriptions
+  has_many :feeds, through: :subscriptions
+
   before_create do
     self.email = self.email.downcase
     self.encrypt_password!

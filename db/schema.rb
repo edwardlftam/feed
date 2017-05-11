@@ -10,7 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510045654) do
+ActiveRecord::Schema.define(version: 20170511021718) do
+
+  create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "feed_id", null: false
+    t.string "author", null: false
+    t.string "title", null: false
+    t.string "subtitle"
+    t.text "content", limit: 16777215
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feed_id"], name: "fk_rails_e6cd8c99b9"
+  end
+
+  create_table "feeds", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name", null: false
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_feeds_on_name"
+  end
+
+  create_table "subscriptions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id", null: false
+    t.bigint "feed_id", null: false
+    t.index ["feed_id"], name: "fk_rails_089f3acc0f"
+    t.index ["user_id"], name: "fk_rails_933bdff476"
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "first_name", null: false
@@ -23,4 +50,7 @@ ActiveRecord::Schema.define(version: 20170510045654) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "articles", "feeds"
+  add_foreign_key "subscriptions", "feeds"
+  add_foreign_key "subscriptions", "users"
 end
