@@ -30,6 +30,7 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_girl'
   gem 'database_cleaner'
+  gem 'simplecov'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
